@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      href="{{ url_for('static', filename='style.css') }}"
+      rel="stylesheet"
+    />
+    <title>CS218 homework-1</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <article>
+        <header class="post-header">
+          <h2>CS218 homework-1</h2>
+
+          <p id="author">
+            Finished by <strong>Lifan Zeng</strong> on Friday, October 11st 2024
+          </p>
+
+          <img
+            src="{{url_for('static', filename='post-img.jpg')}}"
+            width="500"
+            height="200"
+            class="post-img"
+          />
+        </header>
+
+
+
+        <p>
+          <strong>Here is the link to show the result of REST Api:</strong>
+        </p>  
+
+        <ul>
+          <li>
+            <a href="cpu_percent">How busy the CPU is?</a>
+          </li>
+
+          <li>
+            <a href="/hello/">Hello</a>
+          </li>
+        </ul>
+
+        <form action="/s" method="post">
+          <label for="beginning">Begin with:</label>
+          <input type="text" id="beginning" name="beginning">
+          <br>
+          <textarea rows="10" cols="60"> {% block content %}{% endblock %}</textarea>
+          <br>
+          <input type="submit" value="Submit">
+        </form>
+
+
+      <footer>
+        <p>
+          Copyright &copy; 2024 by Lifan Zeng
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
