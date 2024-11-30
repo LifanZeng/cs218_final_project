@@ -1,16 +1,10 @@
-from flask import Flask, render_template, url_for, request, make_response, jsonify, Response
+from flask import Flask, render_template, request
 
-import time
-import os
-import psutil
-import json
-
-import transformers
 from transformers import pipeline
 from transformers import GPT2LMHeadModel, GPT2Tokenizer
 
-tokenizer = GPT2Tokenizer.from_pretrained('Lifan-Z/protGPT2_5')
-protgpt2 = pipeline('text-generation', model='Lifan-Z/protGPT2_5')
+tokenizer = GPT2Tokenizer.from_pretrained('Lifan-Z/protGPT2_AMR_proteins-homolog-512-each')
+protgpt2 = pipeline('text-generation', model= 'Lifan-Z/protGPT2_AMR_proteins-homolog-512-each')
 
 application = Flask(__name__)
 @application.route('/', methods = ['GET'])
@@ -33,4 +27,4 @@ def seq_with_beginning():
     # return render_template('index_with_output.html', my_output = sequences[0])
 
 if __name__ == '__main__':
-    application.run(host= "0.0.0.0", port=5000)
+    application.run(host= "0.0.0.0", port=5000, debug=True)
